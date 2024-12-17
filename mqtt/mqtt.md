@@ -109,40 +109,47 @@ Publish Topic: `rlink/v2/${pid}/${uuid}/issue_response`
 
 ### Device event codes
 
-Code | Event name | Default ACK | Supported device type
----- | ---- | ---- | ----
- reset | Device reset | 0 | Gateway, normal direct connection
- time | Get cloud time | 1 | Gateway, normal direct connection
- model | Acquisition model | 1 | Gateway, normal direct connection
- config | Get remote configuration | 1 | Gateway, normal direct connection
- bind | Device binding | 1 | Gateway, normal direct connection
- info | Equipment information reporting (important, recommended docking) | 1 | Gateway, normal direct connection
- property_report | Attribute reporting | 0 | Gateway, normal direct connection
- ota_progress | OTA progress report | 0 | Gateway, normal direct connection
- sub_bind | Child device binding | 1 | Gateway
- sub_delete | Child device unbind | 1 | Gateway
- sub_login | The child device is launched. | 0 | Gateway
- sub_loginout | Child device offline | 0 | Gateway
- sub_model | Obtain sub-device object model | 1 | Gateway
- sub_property_report | Sub-device attribute reporting | 0 | Gateway
- local_config | Notify the cloud to send the gateway to local groups/scenes/one-click execution | 1 | Gateway
- sub_list | Get a list of child devices | 1 | Gateway
- ipc_cloud | Obtain IPC cloud storage information | 1 | IPC equipment
- p2p_config | Get P2P configuration information | 1 | IPC equipment
- agora_token | Acquire Acoustic Tokens (RTM/RTC) Only for re-obtaining and using the token when it expires. | 1 | Gateway, normal direct connection
- event | Custom event reporting (device alarms, etc.)  | 0 | Gateway, normal direct connection
- ipc_token_bind | IPC token binding device | 1 | IPC equipment
- find_alert | Find pop-up devices (with app) | 0 | Gateway, normal direct connection
- find_report | The gateway reports the searched device | 0 | Gateway
- ipc_live_get | IPC device obtains real-time stream push address | 0 | IPC equipment
- pwd_sync | Device password synchronization (door lock type) | 1 | Door lock equipment
- local_data_sync | Gateway requests local data synchronization | 0 | Gateway
- webrtc_signal_exchange | WEBRTC signaling exchange | 0 | IPC equipment
- update_properties_info | Update device properties | 0 | Gateway, normal direct connection
- agora_ai_token | Get SoundNet AI token | 1 | IPC equipment
- weather | Obtain weather information | 1 | Gateway, normal direct connection
+SN | Code | Event name | Default ACK | Supported device type
+---- | ---- | ---- | ---- | ----
+ 1 | reset | Device reset | 0 | Gateway, normal direct connection
+ 2 | time | Get cloud time | 1 | Gateway, normal direct connection
+ 3 | model | Acquisition model | 1 | Gateway, normal direct connection
+ 4 | config | Get remote configuration | 1 | Gateway, normal direct connection
+ 5 | bind | Device binding | 1 | Gateway, normal direct connection
+ 6 | info | Equipment information reporting (important, recommended docking) | 1 | Gateway, normal direct connection
+ 7 | property_report | Attribute reporting | 0 | Gateway, normal direct connection
+ 8 | ota_progress | OTA progress report | 0 | Gateway, normal direct connection
+ 9 | sub_bind | Child device binding | 1 | Gateway
+ 10 | sub_delete | Child device unbind | 1 | Gateway
+ 11 | sub_login | The child device is launched. | 0 | Gateway
+ 12 | sub_loginout | Child device offline | 0 | Gateway
+ 13 | sub_model | Obtain sub-device object model | 1 | Gateway
+ 14 | sub_property_report | Sub-device attribute reporting | 0 | Gateway
+ 15 | local_config | Notify the cloud to send the gateway to local groups/scenes/one-click execution | 1 | Gateway
+ 16 | sub_list | Get a list of child devices | 1 | Gateway
+ 17 | ipc_cloud | Obtain IPC cloud storage information | 1 | IPC equipment
+ 18 | p2p_config | Get P2P configuration information | 1 | IPC equipment
+ 19 | agora_token | Acquire Acoustic Tokens (RTM/RTC) Only for re-obtaining and using the token when it expires. | 1 | Gateway, normal direct connection
+ 20 | event | Custom event reporting (device alarms, etc.)  | 0 | Gateway, normal direct connection
+ 21 | ipc_token_bind | IPC token binding device | 1 | IPC equipment
+ 22 | find_alert | Find pop-up devices (with app) | 0 | Gateway, normal direct connection
+ 23 | find_report | The gateway reports the searched device | 0 | Gateway
+ 24 | ipc_live_get | IPC device obtains real-time stream push address | 0 | IPC equipment
+ 25 | pwd_sync | Device password synchronization (door lock type) | 1 | Door lock equipment
+ 26 | local_data_sync | Gateway requests local data synchronization | 0 | Gateway
+ 27 | webrtc_signal_exchange | WEBRTC signaling exchange | 0 | IPC equipment
+ 28 | update_properties_info | Update device properties | 0 | Gateway, normal direct connection
+ 29 | agora_ai_token | Get SoundNet AI token | 1 | IPC equipment
+ 30 | weather | Obtain weather information | 1 | Gateway, normal direct connection
+ 31 | sweeper_sts_token | Cleaner obtains upload temporary credentials | 1 | Cleaner
+ 32 | sweeper_map_list | Cleaner gets the full map | 1 | Cleaner
+ 33 | sweeper_map_add | Cleaner adds map | 1 | Cleaner
+ 34 | sweeper_map_update | Sweeper modify map | 1 | Cleaner
+ 35 | sweeper_map_del | Cleaner Delete Map | 1 | Cleaner
+ 36 | sweeper_record_add | Cleaner adds cleaning record | 1 | Cleaner
+ 37 | webrtc_config | Get webrtc config | 1 | Cleaner
 
-#### Device Reset
+#### 1. Device Reset
 
 ```JSON
 //Report data structure
@@ -168,7 +175,7 @@ Code | Event name | Default ACK | Supported device type
 }
 ```
 
-#### Get Cloud Time
+#### 2. Get Cloud Time
 
 ```JSON
 //Report data structure
@@ -218,7 +225,7 @@ Code | Event name | Default ACK | Supported device type
   - Some areas do not have daylight saving time, you can judge whether there is daylight saving time in this area according to `is_zone_dst`  
   - When the user switches the time zone, the cloud may actively issue this response, and the device needs to process it ( `this logic has not yet been added` ).
 
-#### Get Object Model
+#### 3. Get Object Model
 
 ```JSON
 //Report data structure
@@ -339,7 +346,7 @@ Code | Event name | Default ACK | Supported device type
 }
 ```
 
-#### Get Remote Configuration
+#### 4. Get Remote Configuration
 
 ```JSON
 //Report data structure
@@ -365,7 +372,7 @@ Code | Event name | Default ACK | Supported device type
 }
 ```
 
-#### Device Binding
+#### 5. Device Binding
 
 ```JSON
 //Report data structure
@@ -396,7 +403,7 @@ Code | Event name | Default ACK | Supported device type
 }
 ```
 
-#### Device Information Report
+#### 6. Device Information Report
 
 **TODO:** _Check what the below text note means!!_  
 
@@ -444,7 +451,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Attribute Report
+#### 7. Attribute Report
 
 ```JSON
 //Report data structure
@@ -473,7 +480,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### OTA Progress Report
+#### 8. OTA Progress Report
 
 ```JSON
 //Report data structure
@@ -561,7 +568,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Sub-Device Binding
+#### 9. Sub-Device Binding
 
 ```JSON
 //Report data structure
@@ -604,7 +611,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Sub-Device Unbind
+#### 10. Sub-Device Unbind
 
 ```JSON
 //Report data structure
@@ -643,7 +650,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Sub-Device Online
+#### 11. Sub-Device Online
 
 ```JSON
 //Report data structure
@@ -682,7 +689,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Sub-Device Offline
+#### 12. Sub-Device Offline
 
 ```JSON
 //Report data structure
@@ -721,7 +728,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Get Sub-Device Object Model
+#### 13. Get Sub-Device Object Model
 
 ```JSON
 //Report data structure
@@ -846,7 +853,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Sub-Device Attribute Report
+#### 14. Sub-Device Attribute Report
 
 ```JSON
 //Report data structure
@@ -881,7 +888,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Notify the cloud to send the gateway Local Configs (local group/scene/one-click)
+#### 15. Notify the cloud to send the gateway Local Configs (local group/scene/one-click)
 
 ```JSON
 //Report data structure
@@ -904,7 +911,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Get Sub-Device List
+#### 16. Get Sub-Device List
 
 ```JSON
 //Report data structure
@@ -938,7 +945,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Get IPC Cloud Storage Information
+#### 17. Get IPC Cloud Storage Information
 
 ```JSON
 //Report data structure
@@ -1038,7 +1045,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Get P2P Configuration Information
+#### 18. Get P2P Configuration Information
 
 ```JSON
 //Report data structure
@@ -1126,7 +1133,7 @@ It is recommended to connect with this agreement. If this agreement is not conne
 }
 ```
 
-#### Get Token (RTM/RTC)
+#### 19. Get Token (RTM/RTC)
 
 For renewal only. For example, if the issued token expires, you can use this command to get the token again.  
 
@@ -1175,7 +1182,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### Customs event reporting (device alarms, etc.)
+#### 20. Customs event reporting (device alarms, etc.)
 
 ```JSON
 //Report data structure
@@ -1226,7 +1233,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### IPC Token Binding
+#### 21. IPC Token Binding
 
 ```JSON
 //Report data structure
@@ -1253,7 +1260,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### Find Alert
+#### 22. Find Alert
 
 ```JSON
 //Report data structure
@@ -1280,7 +1287,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### Gateway Report found devices
+#### 23. Gateway Report found devices
 
 ```JSON
 //Report data structure
@@ -1312,7 +1319,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### IPC device obtains real-time stream push address
+#### 24. IPC device obtains real-time stream push address
 
 ```JSON
 //Report data structure
@@ -1342,7 +1349,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### Device password synchronization (door lock type)
+#### 25. Device password synchronization (door lock type)
 
 ```JSON
 //Device report
@@ -1407,7 +1414,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### Gateway requests local data synchronization
+#### 26. Gateway requests local data synchronization
 
 ```JSON
 //Device report
@@ -1432,7 +1439,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### WEB-RTC signaling exchange
+#### 27. WEB-RTC signaling exchange
 
 ```JSON
 //Device reporting (SDP_ANSWER)
@@ -1469,7 +1476,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### Update device properties
+#### 28. Update device properties
 
 ```JSON
 //Device report
@@ -1500,7 +1507,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### Get Agora AI Token
+#### 29. Get Agora AI Token
 
 ```JSON
 //Device report
@@ -1530,7 +1537,7 @@ For renewal only. For example, if the issued token expires, you can use this com
 }
 ```
 
-#### Get Weather Information
+#### 30. Get Weather Information
 
 ```JSON
 //Device report
@@ -1555,6 +1562,251 @@ For renewal only. For example, if the issued token expires, you can use this com
         "sunriseTs":1626197189,//Sunrise timestamp (seconds)
         "sunsetTs":1626197189,//Sunset timestamp (seconds)
         "temperature":36//Temperature (Celsius)
+    }
+}
+```
+
+#### 31. Cleaner obtains upload temporary credentials  
+
+```JSON
+//Device report
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_sts_token",//Command code
+    "ack":1,//0: No reply required; 1: Reply required
+    "data":{
+        "type":"map" //Upload type. (map: map, record: sweep record)
+    }
+}
+```
+
+```JSON
+//Cloud reply (no reply when ack=0)
+{
+    "res":0, //Status code 0 represents success, others represent failure; see status code definition
+    "msg":"success", //Result description
+    "id":"45lkj3551234001",//Message ID (consistent with the reported message ID)
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_sts_token",//Event code (consistent with the reported event code)
+    "data":{
+        "type":"map",//Upload type.(map: map, record: cleaning record)
+        "ossType": "COS", //oss type.COS|S3
+        "bucketName": "sweeper-cloud-dev-1313015441",//Bucket name
+        "region": "ap-guangzhou",//Storage pool region
+        "accessKeyId": "xxxx",//COS secretId,S3 accessKeyId
+        "secretAccessKey": "xxxx",//COS secretKey,S3 secretAccessKey
+        "sessionToken": "xxxxx",//Temporary credentials
+        "expiredTime": 1734318703,//Expiration time (seconds)
+        "authDir": "map/az1598928553543086080/inv01cfbAaeb1E02E/"//Authorization directory
+    }
+}
+```
+
+#### 32. Cleaner gets the full map  
+
+```JSON
+//Device report
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_map_list",//Command code
+    "ack":1,//0: No reply required; 1: Reply required
+    "data":{
+    }
+}
+```
+
+```JSON
+//Cloud reply (no reply when ack=0)
+{
+    "res":0, //Status code 0 represents success, others represent failure; see status code definition
+    "msg":"success", //Result description
+    "id":"45lkj3551234001",//Message ID (consistent with the reported message ID)
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_map_list",//Event code (consistent with the reported event code)
+    "data":{
+        "mapId": "1868505694547271680", //map id
+        "mapFormat": "custom", //map format (device customization)
+        "mapName": "First map", //map name
+        "mapPath": "map/az1598928553543086080/inv01cfbAaeb1E02E/xxxx", //map path
+        "mapDesc": "map description", //map description,
+        "createTime": 1734321447, //creation time (seconds)
+        "mapSignPath": "https://xxxx/map/az1598928553543086080/inv01cfbAaeb1E02E/xxxx" //map data access address
+
+    }
+}
+```
+
+#### 33. Cleaner adds map  
+
+```JSON
+//Device report
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_map_add",//Command code
+    "ack":1,//0: No response required; 1: Required response
+    "data":{
+        "mapFormat":"custom", //Map format (device custom)
+        "mapName":"First map", //Map name
+        "mapPath":"map/az1598928553543086080/inv01cfbAaeb1E02E/xxxx",//Map path
+        "mapDesc":"Map description" //Map description
+    }
+}
+```
+
+```JSON
+//Cloud response (no response when ack=0)
+{
+    "res":0, //Status code 0 represents success, others represent failure; see status code definition
+    "msg":"success", //Result description
+    "id":"45lkj3551234001",//Message ID (consistent with the reported message ID)
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_map_add",//Event code (consistent with the reported event code)
+    "data":{
+        "mapId": "1868505694547271680", //Map id
+        "mapFormat": "custom",//Map format (device custom)
+        "mapName": "First map",//Map name
+        "mapPath": "map/az1598928553543086080/inv01cfbAaeb1E02E/xxxx",//Map path
+        "mapDesc": "Map description"//Map description
+    }
+}
+```
+
+#### 34. Sweeper modify map  
+
+```JSON
+//Device report
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_map_update",//Command code
+    "ack":1,//0: No reply required; 1: Reply required
+    "data":{
+        "mapId": "1868505694547271680", //Map id
+        "mapFormat":"custom", //Map format (device custom)
+        "mapName":"First map", //Map name
+        "mapPath":"map/az1598928553543086080/inv01cfbAaeb1E02E/xxxx",//Map path
+        "mapDesc":"Map description" //Map description
+    }
+}
+```
+
+```JSON
+//Cloud reply (no reply when ack=0)
+{
+    "res":0, //Status code 0 represents success , others represent failure; see status code definition
+    "msg":"success", //result description
+    "id":"45lkj3551234001", //message ID (consistent with reported message ID)
+    "ts":1626197189, //timestamp (seconds)
+    "code":"sweeper_map_update", //event code (consistent with reported event code)
+    "data":{
+        "mapId": "1868505694547271680", //map id
+        "mapFormat": "custom", //map format (device custom)
+        "mapName": "first map", //map name
+        "mapPath": "map/az1598928553543086080/inv01cfbAaeb1E02E/xxxx", //map path
+        "mapDesc": "map description" //map description
+    }
+}
+```
+
+#### 35. Cleaner Delete Map  
+
+```JSON
+//Device report
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_map_del",//Command code
+    "ack":1,//0: No reply required; 1: Reply required
+    "data":{
+        "mapId": "1868505694547271680", //Map id
+    }
+}
+```
+
+```JSON
+//Cloud reply (no reply when ack=0)
+{
+    "res":0, //Status code 0 represents success, others represent failure; see status code definition
+    "msg":"success", //Result description
+    "id":"45lkj3551234001",//Message ID (consistent with the reported message ID)
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_map_del", // event code (consistent with the reported event code)
+    "data":{
+        "result": true // delete result
+    }
+}
+```
+
+#### 36. Cleaner adds cleaning record  
+
+```JSON
+//Device report
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sweeper_record_add",//Command code
+    "ack":1,//0: No reply required; 1: Reply required
+    "data":{
+        "mapId": "1868505694547271680", //Map id
+        "recordPath":"map/az1598928553543086080/inv01cfbAaeb1E02E/xxxx",//Sweep data path
+        "recordDesc":"xxxx"//Sweep description information
+    }
+}
+```
+
+```JSON
+//Cloud reply (no reply when ack=0)
+{
+    "res":0, //Status code 0 represents success, others represent failure; see status code definition
+    "msg":"success", //Result description
+    "id":"45lkj3551234001", //Message ID (consistent with the reported message ID)
+    "ts":1626197189, //Timestamp (seconds)
+    "code":"sweeper_record_add", //Event code (consistent with the reported event code)
+    "data":{
+        "recordId": "1868505694547271680", //Sweeping record id
+        "mapId": "1868505694547271680", //Map id
+        "recordPath":"map/az1598928553543086080/inv01cfbAaeb1E02E/xxxx", //Sweeping data path
+        "recordDesc":"xxxx" //Sweeping description information
+    }
+}
+```
+
+#### 37. Get webrtc config  
+
+```JSON
+//Device report
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"webrtc_config",//Command code
+    "ack":1,//0: No response required; 1: Required response
+    "data":{
+    }
+}
+```
+
+```JSON
+//Cloud response (no response when ack=0)
+{
+    "res":0, //Status code 0 represents success, others represent failure; see status code definition
+    "msg":"success", //Result description
+    "id":"45lkj3551234001",//Message ID (consistent with the reported message ID)
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"webrtc_config",//Event code (consistent with the reported event code)
+    "data":{
+        "stunDomain":"stun.l.google.com",
+        "stunUrl": "stun:stun.l.google.com:19302", //stun server address
+        "turnUrls": [
+        "turn:turn.3721iot.com:19573?transport=udp" //turn server address
+        ],
+        "auth":{
+            "userName":"1666534426:rn01xxxxx",
+            "password":"xxxxfsafsf",
+            "expireSecond":3600
+        }
     }
 }
 ```
@@ -3196,28 +3448,462 @@ Topic 2: `app/v2/${userId}/userNotify`
 
 ### App Message Codes
 
-Code | Description
- ----- | -----
- ota_progress | Equipment Upgrade Progress Notification
- property_change | Device attribute change notification
- status | Device status change notification
- bind_result | Binding result notification
- ipc_token_used | IPC token usage success notification
- wake_up_success | Device wake-up success notification
- alert | Pop-up device event
- common_cmd_resp | General instruction reply notification
- find | The gateway searches for nearby device notifications
- sub_replace_result | Subdevice replacement result notification
- matter_find | Matter device search
- matter_pair | Matter Device Pairing Notification
- local_group_result | Local group save result notification
- local_scene_result | Local scene save result notification
- config_settings_resp | Set device configuration result notification
- pwd_list_resp | Set password result notification (door lock type)
- signal_check_result | Signal detection result notification
- webrtc_signal_exchange | WEBRTC signaling exchange notification
- device_properties_update | Device attribute update notification
- sys_notice | System message notification
+Serial | Code | Description
+---- | ----- | -----
+ 1 | ota_progress | Equipment Upgrade Progress Notification
+ 2 | property_change | Device attribute change notification
+ 3 | status | Device status change notification
+ 4 | bind_result | Binding result notification
+ 5 | ipc_token_used | IPC token usage success notification
+ 6 | wake_up_success | Device wake-up success notification
+ 7 | alert | Pop-up device event
+ 8 | common_cmd_resp | General instruction reply notification
+ 9 | find | The gateway searches for nearby device notifications
+ 10 | sub_replace_result | Subdevice replacement result notification
+ 11 | matter_find | Matter device search
+ 12 | matter_pair | Matter Device Pairing Notification
+ 13 | local_group_result | Local group save result notification
+ 14 | local_scene_result | Local scene save result notification
+ 15 | config_settings_resp | Set device configuration result notification
+ 16 | pwd_list_resp | Set password result notification (door lock type)
+ 17 | signal_check_result | Signal detection result notification
+ 18 | webrtc_signal_exchange | WEBRTC signaling exchange notification
+ 19 | device_properties_update | Device attribute update notification
+ 20 | sys_notice | System message notification
+
+#### 1. Equipment Upgrade Progress Notification
+
+Data Structure defination  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"ota_progress",//Notification code
+    "data":{
+        //0, success; error code, -1: download timeout; -2: file does not exist; -3: signature expired; -4: MD5 does not match; -5: firmware update failed
+        "resCode":0,
+        "resMsg":"",//Error message
+        "deviceId":"Device ID",
+        "type":"download",//download: downloading, burning: upgrade burning, done: upgrade successful, fail: failure
+        "percent":80, //Download progress 0~100;
+        "version":"1.0.0"//Upgrade version number
+    }//Data structure
+}
+```
+
+#### 2. Device attribute change notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"property_change",//Notification code
+    "data":{
+        "devices":[
+        {
+            "deviceId":"Device ID",
+            "gatewayId":"Gateway ID",//Required when reporting on a sub-device
+            "properties":{
+                "color":"red", //Color Red
+                "brightness":80 //Brightness 80
+            }
+        }
+        ],
+        "groups":[
+        {
+        "groupId":"Group ID",
+        "properties":{
+            "color":"red", //Color Red
+            "brightness":80 //Brightness 80
+        }
+        }
+        ]
+    }//Data structure
+}
+```
+
+#### 3. Device status change notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"status",//Notification code
+    "data":{
+        "deviceId":"Device ID",
+        "online":1, //Online status 0: offline; 1: online
+        "tcpOnlineStatus":1 //Low power TCP online status 0: offline; 1: online Only low power devices pay attention to this field. Corresponding device tcpOnlineStatus
+    }//Data structure
+}
+```
+
+#### 4. Binding result notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"bind_result",//Notification code
+    "data":{
+        "devices":[
+        {
+            "deviceId":"Device ID",
+            "uuid":"Device uuid",
+            "trdUuid":"xxxxxx",//No real uuid when searching, used for binding result matching
+            "gatewayId":"Gateway device ID",
+            "type":"add",//add: bind; remove: unbind
+            "result":"success", //success: success; fail: failure
+            "errCode":0,//0: success; 17032: Device has been bound, others: binding failed
+            "errMsg":""//Error description
+        }
+        ]
+    }//Data structure
+}
+```
+
+#### 5. IPC token usage success notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"ipc_token_used",//Notification code
+    "data":{
+        "token":"3rgfG5",
+        "uuid":"xxxxxxxx"//UUID of the current scanning device
+    }//Data structure
+}
+```
+
+#### 6. Device wake-up success notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"wake_up_success",//Notification code
+    "data":{
+        "deviceId":"Device ID"
+    }//Data structure
+}
+```
+
+#### 7. Device pop-up notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"alert",//Notification code
+    "data":{
+        "deviceId":"Device ID"
+    }//Data structure
+}
+```
+
+#### 8. General instruction reply notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"common_cmd_resp",//Notification code
+    "data":{
+        "deviceId":"",//Device ID
+        "respType":"",//Reply type
+        "respData":{//Different reply types have different contents
+        }
+    }//Data structure
+}
+```
+
+#### 9. The gateway searches for nearby device notifications
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"find",//Notification code
+    "data":{
+        "devices":[
+        {
+            "pid":"Product ID",
+            "uuid":"Device uuid",
+            "trdUuid":"xxxxxx"//No real uuid when searching, used for binding result matching
+            "gatewayId":"Gateway device ID",
+            "productName":"Name",
+            "imageUrl":"Image",
+            "switchDpList":["switch_1","switch_2"]//Quick switch dp
+        }
+        ]
+    }//Data structure
+}
+```
+
+#### 10. Subdevice replacement result notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sub_replace_result",//Notification code
+    "data":{
+        "deviceId":"Replaced device ID",
+        "newUuid":"Replaced new uuid",
+        "result":"success"//success: success; fail: failure;
+    }//Data structure
+}
+```
+
+#### 11. Matter device search  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"matter_find",//Notification code
+    "data":{
+        "clientId":"xxxx",//Unique identifier of the device that initiated the search If it is the current device, no processing is required
+        "userId":"Search user ID" //If processing is required, and userId is the current logged-in user, the shared device needs to be transferred when calling the interface
+    }//Data structure
+}
+```
+
+#### 12. Matter Device Pairing Notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"matter_pair",//Notification code
+    "data":{
+        "clientId":"xxxx",//Unique identifier of the paired terminal. Only process if it is the current device
+        "devices":[
+        {
+            "deviceId":"Device ID",
+            "payload":"Pairing information"
+        }
+        ]
+    }//Data structure
+}
+```
+
+#### 13. Local group save result notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"local_group_result",//Notification code
+    "data":{
+        "groupId":"xxxx",//Group ID
+        "devices":[
+        {
+            "deviceId":"Device ID",
+            "status":1,//0 No response; 1 Success; 2: Failure
+        }
+        ]
+    }//Data structure
+}
+```
+
+#### 14. Local scene save result notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"local_scene_result",//Notification code
+    "data":{
+        "instanceId":"xxxx",//Scene ID
+        "devices":[
+        {
+            "deviceId":"Device ID",
+            "status":1,//0 No response; 1 Success; 2: Failure
+        }
+        ]
+    }//Data structure
+}
+```
+
+#### 15. Set device configuration result notification  
+
+```JSON
+//Data structure (whitelist)
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"config_settings_resp",//Notification code
+    "data":{
+        "deviceId":"xxxx",//Device ID
+        "type":"white_list", //white_list whitelist
+        "settings":{
+            "operatorType":1,//1: Add, 2: Delete
+            "uuids":["uuid1","uuid2"]
+        },
+        "result":"success"//success success; fail: Failure
+    }//Data structure
+}
+```
+
+```JSON
+//Data structure (backup network)
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//timestamp (seconds)
+    "code":"config_settings_resp",//notification code
+    "data":{
+        "deviceId":"xxxx",//device ID
+        "type":"wifi_list", //wifi_list backup network list
+        "settings":{
+            "operatorType":1,//1: add, 2: delete
+            "wifis":[{
+                "ssid":"wifi_1",
+                "pwd":"123456"//required when adding
+            }]
+        },
+        "result":"success"//success success; fail: failure
+    }//data structure
+}
+```
+
+```JSON
+//data structure (network connection settings (change the network currently connected to the device))
+{
+    "id":"45lkj3551234001",//message ID
+    "ts":1626197189,//timestamp (seconds)
+    "code":"config_settings_resp",//Notification code
+    "data":{
+        "deviceId":"xxxx",//Device ID
+        "type":"wifi_set", //wifi_set network connection settings
+        "settings":{
+            "ssid":"wifi_1",
+            "pwd":"123456"
+        },
+        "result":"success"//success success; fail: failure
+    }//Data structure
+}
+```
+
+#### 16. Set password result notification (door lock type)  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"pwd_set_result",//Notification code
+    "data":{
+        "deviceId":"xxxx",//Device ID
+        "operatorType":1,//1 add; 2 delete
+        "pwdData":{
+            "index":1,//Password ID is required, generated by the device when adding, to ensure uniqueness
+            //The following fields are required when operatorType=1 is added
+            "type":1,//1 digital password; 2: fingerprint; 3: card
+            "deviceUserId":"001",//User ID
+            "timeType":1,//Time type: 1: permanent; 2: single; 3 limited time;
+            //The following fields are required when timeType=3 is limited time
+            "activeTime":1626197189,//Effective timestamp (second level)
+            "expireTime":1626197189,//Expiration timestamp (second level)
+            "startTime":"12:00",//Start time (HH:mm)
+            "endTime":"13:00",//End time (HH:mm)
+            "loops":"1111111"//Cycle (0000000, 7 digits starting from Monday, value 1 means execution is allowed on that day)
+        }
+    }
+}
+```
+
+#### 17. (Obsolete) Signal Detection Result Notification  
+
+(See: Device Property Update Notification )  
+
+#### 18. WEBRTC signaling exchange notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"webrtc_signal_exchange",//Notification code
+    "data":{
+        "deviceId":"xxxx",//Device ID
+        "peerClientId": "peer_0xi681aspzmlbm9",
+        "method": "SDP_ANSWER", //SDP_ANSWER, ICE_CANDIDATE
+        "params":"[{\"candidate\":\"candidate:3621809022 1 udp 2113937151 192.168.26.71 57926 typ host generation 0 ufrag T3TR network-cost 999\",\"sdpMid\":\"0\",\"sdpMLineIndex\":0,\"usernameFragment\":\"T3TR\"}]",
+        "rawData":"{}" 
+    } 
+}
+```
+
+#### 19. Device attribute update notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"device_property_update",//Notification code
+    "data":{
+        "deviceId":"xxxx",//Device ID
+        "propertiesInfo":{
+            "temperatureUnit":null,//Temperature unit 1 degree Celsius 2 degrees Fahrenheit
+            "amountUnit":null,//Cost unit CNY: RMB USD: US dollar EUR: Euro
+            "amountRateShow":null,//Unit rate
+            "currentSsid":"rino",//Currently connected wifi name
+            "signal":null,//Signal strength: 1: good; 2: medium; 3: poor
+            "networkType":null,//Network type: 1wifi; 2wired
+            "signalValue":null,//Signal value (%)
+            "ipcCurrentConnection":null,//Current number of ipc connections
+            "ipcMaxConnection":null,//Maximum number of ipc connections
+            "wifiList":[//Available networks
+            {
+                "ssid":"rino2.4",
+                "rssi":-50
+            }
+            ],
+            //...
+        }
+    }
+}
+```
+
+#### 20. System message notification  
+
+```JSON
+//Data structure
+{
+    "id":"45lkj3551234001",//Message ID
+    "ts":1626197189,//Timestamp (seconds)
+    "code":"sys_notice",//Notification code
+    "data":{
+        "type":"message",//Type: message: message notification; homeShare: home sharing notification; deviceShare device sharing notification
+        "messageInfo":{//Message notification content
+            "msgType":"device_alarm",
+            "msgCode":"alarm",
+            "title":"Device alarm",
+            "body":"Device sends alarm"
+        },
+        "shareInfo":{//Share notification content
+            //To be determined
+        }
+    }
+}
+```
 
 ## 4. App Level REST API for device control
 
