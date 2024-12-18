@@ -1,12 +1,12 @@
 # Sigmesh Private Communication Protocol - V0.1
 
-This article defines the protocol format in the RINO Vendor Model to achieve private data transmission, which can achieve control logic or data transmission that cannot be achieved in the standard model of the Bluetooth Mesh Model.  
+This article defines the protocol format in the Protco Vendor Model to achieve private data transmission, which can achieve control logic or data transmission that cannot be achieved in the standard model of the Bluetooth Mesh Model.  
 
 Considering the characteristics of Bluetooth MESH for transmitting small amounts of data, the protocol is based on the principle of simplification, that is, rules such as saving where possible and bit marking.  
 
 ## 1. Overview  
 
-The main categories of Bluetooth mesh products include lighting, electrical, sensing, remote control, etc. When designing the Bluetooth mesh product system, the standard model of Bluetooth should be given priority to achieve its functions. For example, for the switch of the lighting category, the Generic OnO Model is used.  
+The main categories of Bluetooth mesh products include lighting, electrical, sensing, remote control, etc. When designing the Bluetooth mesh product system, the standard model of Bluetooth should be given priority to achieve its functions. For example, for the switch of the lighting category, the Generic On/Off Model is used.  
 
 Due to the limited functionality of the standard Model, it is necessary for the manufacturer Model to define private features. For example, Bluetooth lighting products use the manufacturer Model to achieve scene configuration and switching.  
 
@@ -18,7 +18,7 @@ The vendor model must be configured on the first element of the device and suppo
 
 The Client model ID and server level model ID of the private model are described as follows:  
 
-Vendor ID: 0x0211 (Tai Ling Wei)
+Vendor ID: 0x0211
 
 - Server Model ID：0x0211 0000
 - Client Model ID：0x0211 0001
