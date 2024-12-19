@@ -3,6 +3,8 @@
 
 **TODO:** _Add missing endpoints, if any. Complete the API doc_  
 
+Base URL `https://service.protco.in/api/`  
+
 ## Chat Api  
 
 ```TEXT
