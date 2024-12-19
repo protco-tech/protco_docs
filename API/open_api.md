@@ -23,17 +23,16 @@ The cloud development platform provides different access addresses for different
 
 | Region | Address |
 | :---------------- | :--------------------------------- |
-| Development Data Center | https://devopenapi.rinoiot.com |
-| Test Data Center | https://testopenapi.rinoiot.com |
-| Production - China Data Center | https://openapi.rinoiot.com |
-| Production - US Data Center | https://openapi-us.rinoiot.com |
+| Development Data Center | https://devopenapi.protco.in |
+| Test Data Center | https://testopenapi.protco.in |
+| Production - India Data Center | https://openapi.protco.in |
 
 ## Request header parameters
 
 The following are the commonly used request header parameters when calling the cloud development platform interface. Please be sure to add the **required** parameters in the request header.
 
 | Parameter name | Type | Parameter position | Required | Description |
-| :----------- | :----- | :------- | :--- | :-------------- ------------------------------------------------ |
+| :----------- | :----- | :------- | :--- | :--------------------- |
 | access_id | String | header | Yes | Authorization ID. |
 | sign | String | header | Yes| The signature calculated using the specified signature algorithm. |
 | sign_method | String | header | Yes | The signature digest algorithm, fixed to HMAC-SHA256. |
@@ -47,7 +46,7 @@ Take the demo information API `GET:/v1.0/demo/{id}` as an example: the request t
 - API Request
 
   ```
-  GET:https://devopenapi.rinioot.com/v1.0/123
+  GET:https://devopenapi.protco.in/v1.0/123
   ```
 
 - Request header
@@ -3095,7 +3094,7 @@ GET: /v1.0/appUser/page
 **`body`** Description **`Content-Type: application/json`**
 
 | Parameter name | Type | Parameter position | Required | Description |
-| :------------- | :---- | :---------------- | :------- | : ------------ |
+| :------------- | :---- | :---------------- | :------- | :------------ |
 | pageSize | Integer | | false | Number of queries per page default: 10 |
 | currentPage | Integer | | false | Query the current page number Default: 1 |
 | asc | Boolean | | false | Sorting method true: ascending, false: descending (default descending) |
@@ -3629,7 +3628,7 @@ GET: /v1.0/product/page
 **`body`** Description **`Content-Type: application/json`**
 
 | Parameter name | Type | Parameter position | Required | Description |
-| :------------- | :------------- | :------- | :------- | : ----------- |
+| :------------- | :------ | :------- | :------- | :----------- |
 | pageSize | Integer | | false | Number of queries per page default: 10 |
 | currentPage | Integer | | false | Query the current page number Default: 1 |
 | asc | Boolean | | false | Sorting method true: ascending, false: descending (default descending) |
@@ -4822,7 +4821,7 @@ GET: /v1.0/device/page
 **`body`** Description **`Content-Type: application/json`**
 
 | Parameter name | Type | Parameter position | Required | Description |
-| :------------- | :------------- | :------- | :------- | : ---------------------------- |
+| :------------- | :------------- | :------- | :------- | :------------------- |
 | pageSize | Integer | | false | Number of queries per page default: 10 |
 | currentPage | Integer | | false | Query the current page number Default: 1 |
 | asc | Boolean | | false | Sorting method true: ascending, false: descending (default descending) |
