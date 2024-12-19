@@ -120,16 +120,14 @@ The authorization process is as follows:
 
    How to query `Access ID` and `Access Secret`:
 
-   ```
+    ```TEXT
     Log in to IOT Platform > Cloud Development > Cloud Project > View Cloud Project Details.
-   ```
+    ```
 
-   
-
-   For signature conversion steps, see [Signature Mechanism](https://devdocs.rinoiot.com/1646493111391105024).
+   For signature conversion steps, see [Signature Mechanism](https://devdocs.protco.com/1646493111391105024).
 
 2. Verify and issue tokens to third-party cloud platforms.
-   ![Description](https://rinioot-iot-dev-1313015441.cos.ap-guangzhou.myqcloud.com/89f8b20e-cb3b-4 6bb-a8a2-17499ee45821-1681439470640-%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%20%281%29.jpg)
+   ![Description](https://rinoiot-iot-dev-1313015441.cos.ap-guangzhou.myqcloud.com/89f8b20e-cb3b-46bb-a8a2-17499ee45821-1681439470640-%E6%9C%AA%E5%91%BD%E5%90%8D%E6%96%87%E4%BB%B6%20%281%29.jpg)
 
 ## Permission Dimension
 
