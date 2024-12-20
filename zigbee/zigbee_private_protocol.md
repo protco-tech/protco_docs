@@ -1,8 +1,6 @@
 
 # Zigbee Custom Protocol
 
-**TODO:** _Complete it according to the latest docs received from the RINO team_  
-
 ## Frame Format  
 
 Protocol composition: `Header + Payload`  

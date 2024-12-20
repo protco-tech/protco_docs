@@ -1,7 +1,5 @@
 
-# Protco Zigbee (v1.00)
-
-**TODO:** _Complete it according to the latest docs received from the RINO team_  
+# Protco Zigbee
 
 ## Zigbee Basic
 
