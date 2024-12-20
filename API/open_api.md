@@ -975,7 +975,7 @@ Business exception error codes refer to error codes starting with `60`.
 **Response parameters**:
 
 | Parameter name | Parameter description | Type | schema |
-| -------- | ---------------- | ------------- | -------- ------ |
+| -------- | ---------------- | ------------- | -------------- |
 | code | Response status code | integer(int32) | integer(int32) |
 | data | response data | boolean | |
 | message | response message | string | |
@@ -2332,7 +2332,7 @@ Business exception error codes refer to error codes starting with `60`.
 **Response parameters**:
 
 | Parameter name | Parameter description | Type | schema |
-| -------- | ---------------- | ------------- | -------- ------ |
+| -------- | ---------------- | ------------- | ------------- |
 | code | Response status code | integer(int32) | integer(int32) |
 | data | response data | boolean | |
 | message | response message | string | |
@@ -2382,7 +2382,7 @@ Business exception error codes refer to error codes starting with `60`.
 **Response parameters**:
 
 | Parameter name | Parameter description | Type | schema |
-| -------- | ---------- | ------------- | -------- ------ |
+| -------- | ---------- | ------------- | ------------- |
 | code | Response status code | integer(int32) | integer(int32) |
 | data | response data | boolean | |
 | message | response message | string | |
