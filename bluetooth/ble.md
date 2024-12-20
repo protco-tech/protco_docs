@@ -26,6 +26,8 @@ Response data segment | Type | Description
  Complete Local Name | 0x09 | Length: 0x03; Type:0x09; Data: 0x52,0x59
  manufacturer specific data | 0xff | Length: 0x19 Type: 0xff<br/>Data: COMPANY ID:0x0000<br/> FLAG:0x00<br/> Protocol version:0x03<br/> Encryption method:0x00<br/> Communication capacity: 0x0000<br/> Reserved field: 0x00<br/> UUID field: 6 or 16 bytes
 
+**TODO:** _Verify if the app supports any encryption! I don't think there is any!_
+
 Encryption byte  
 
 ```C
