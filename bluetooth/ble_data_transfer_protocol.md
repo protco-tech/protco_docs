@@ -22,7 +22,7 @@ Take the secret of the triplet for MD5 and then convert it to hex string, and th
 
 ## Bluetooth Broadcasting data Format  (*TODO: Verify!)
 
-Bluetooth name: RLINK  
+Bluetooth name: RY  
 Broadcast data:
 deviceType 1 byte 01 - Bluetooth Dual Mode Device (BK)  
 isBind 1 byte, whether the user has been bound, 00-no 01-yes  

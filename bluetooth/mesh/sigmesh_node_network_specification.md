@@ -225,7 +225,7 @@ Synchronization mechanism is as follows
 1. After the node is powered on, it actively obtains the time of the gateway through the public Time Get command or the private GET_GW_TIME command in a timely manner. When the invalid time is obtained, it can be repeated at random intervals for a certain period of time until the time is valid.
 2. After the time synchronization is successful, the device can continue to synchronize the gateway time with a relatively long interval and add a random delay to correct the clock deviation problem of the device.  
 
-## 9. ~~Public DP definition (abandoned)~~
+## 9. ~~Public DP definition (deprecated)~~
 
 ~~When the gateway processes the public DP identifier, it preferentially converts it to the sigmesh standard protocol command for forwarding, and only smuggles the protocol channel for transmission when it cannot be converted to the corresponding standard protocol. Therefore, when creating the function of the product, it is necessary to consider whether to convert it to the sigmesh public protocol for transmission. If the DP definition does not conform to the definition in the public DP table, the DP identifier cannot be defined as the public DP identifier name as follows.~~
 

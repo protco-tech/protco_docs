@@ -82,4 +82,12 @@ Service UUID | Characteristic UUID | Properties | Security Permissions
 
 ## MTU  
 
-**TODO:** _check and complete!_  
+Minimum MTU is 128  
+
+App requests MTU of 517  
+
+Recommended device MTU is 512  
+
+## Data transfer over GATT  
+
+Check [BLE Data transfer protocol](ble_data_transfer_protocol.md) for the details.  
