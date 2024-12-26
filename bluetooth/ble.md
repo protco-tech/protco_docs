@@ -82,9 +82,9 @@ Service UUID | Characteristic UUID | Properties | Security Permissions
 
 ## MTU  
 
-Minimum MTU is 128  
+Minimum required MTU is 128  
 
-App requests MTU of 517  
+Protco App requests MTU of 517  
 
 Recommended device MTU is 512  
 
