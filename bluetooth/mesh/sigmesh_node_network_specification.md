@@ -34,6 +34,7 @@ Data segment description | AD Type | Data composition
  16-Bit service data | 0x16 | See the table below for service data formats
 
 Field | Length(Bytes) | Description
+---- | ---- | ----
  Length | 1 | N | N, the length is not fixed, the sum of the lengths of the following fields
  AD Type | 1 | 0X16, fixed to this value, represents 16-bit service data
  Service UUID | 2 | 0X1827 (Mesh Provisioning service), little endian transmission, actual transmission sequence: 0x27, 0x18
