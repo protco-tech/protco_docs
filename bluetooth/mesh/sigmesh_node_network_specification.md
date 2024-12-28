@@ -5,7 +5,7 @@ This article defines the network access specification for sigmesh devices. Accor
 
 ## 1. Refrence  
 
-Bluetooth Mesh Official Specification Document  
+[Bluetooth Mesh Official Specification Document](https://www.bluetooth.com/specifications/specs/?types=specs-docs&keyword=Mesh+Protocol&filter=)
 
 ## 2. Byte Order  
 
@@ -26,9 +26,24 @@ Based on the big and small endian byte order of the Access layer, that is, multi
 
 - It is recommended that the beacon transmission interval be less than or equal to 3 seconds; otherwise, network access may fail and the network access speed will be relatively slow.  
 
+Among them, the PB-GATT broadcast packet format is as follows:  
+
+Data segment description | AD Type | Data composition
+---- | ---- | -----
+ Device LE physical connection identification | 0x01 | Length: 0x02 <br/>Type: 0x01 <br/>Data: 0x06
+ 16-Bit service data | 0x16 | See the table below for service data formats
+
+Field | Length(Bytes) | Description
+ Length | 1 | N | N, the length is not fixed, the sum of the lengths of the following fields
+ AD Type | 1 | 0X16, fixed to this value, represents 16-bit service data
+ Service UUID | 2 | 0X1827 (Mesh Provisioning service), little endian transmission, actual transmission sequence: 0x27, 0x18
+ Device UUID | 16 | Device UUID
+ OOB Information | 2 | The OOB information of the device is mainly used for identity authentication when accessing the network
+
 ### 3.2 Device UUID  
 
-The device UUID consists of the device Mac address, product capability value, and product model.
+The device UUID consists of the device Mac address, product capability value, and product model.  
+
 UUID field introduction  
 
 Type | Byte | Description
@@ -50,8 +65,10 @@ For example, if the MAC of the sub-device is 11:22:33:44:55:66, the device capab
 - Broadcast capability description  
 
 Short broadcast: default broadcast, unicast transmission load capacity of up to 31 bytes, BLE4.0 and above support default broadcast packets.  
+
 Long broadcast: extended broadcast, with a maximum transmission load of 255 bytes per packet. BLE5.0 supports extended broadcast packets.  
-When the value is 1, it indicates support for long and short broadcasts, and when the value is 0, it indicates support for only short broadcasts.  
+
+When the value is 1, it indicates support for long and short broadcasts, and when the value is 0, it indicates support for only short broadcasts. Long broadcasts are mainly used for OTA upgrades, which can greatly improve the upgrade speed.  
 
 - Node type description  
 
@@ -66,11 +83,11 @@ Value | Device type | Explanation
 
 Product Type | Product Category
 ------------ | -----------
- Lighting | 0x01
- Electrical | 0x02
- Sensor | 0x03
- Remote Control | 0x04
- Wireless Switch | 0x05
+ Lighting class | 0x01
+ Electrical class | 0x02
+ Sensor class | 0x03
+ Remote Control class | 0x04
+ Wireless Switch class | 0x05
  High Voltage Sensor | 0x06
  High Voltage Remote Control | 0x07
 
@@ -83,6 +100,37 @@ For example, if the equipment supports long and short broadcasts, the product ty
  Type | RFU | Broadcast capability|  Device type | RFU | Product category | Product category
  Bit | bit15 | bit14 | bit13-bit12 | bit11-bit8 | bit7-bit4 | bit3-bit0
  Value | 0 | 1 | 1 | 0 | 1 | 0
+
+### 3.4 Network equipment proxy service  
+
+After the sub-node that supports proxy services has been deployed, it will broadcast its support for proxy services for mobile phones to directly connect to the Sigmesh sub-node, allowing mobile phones to access other sub-nodes in the entire Simgesh network through Bluetooth.  
+
+Among them, the broadcast packet format is as follows:  
+
+Data segment description | AD Type | Data composition
+---- | ---- | ----
+ Device LE physical connection identification | 0x01 | Length: 0x02 <br/>Type: 0x01 <br/>Data: 0x06
+ 16-Bit service data | 0x16 | See the table below for service data formats
+
+The service data format is shown in the following table:  
+
+Field | Length (bytes) | Explanation
+---- | ---- | ----
+ Length | 1 | N, the length is not fixed, the sum of the lengths of the following fields
+ AD Type | 1 | 0X16, fixed to this value, represents 16-bit service data
+ Service UUID | 2 | 0X1828 (Mesh Proxy Service), little endian transmission, actual transmission order: 0x28, 0x18
+ Identification Type | 1 | Indication type
+ Identification Parameters | N | Indication data
+
+Among them, the indication type values are as follows:  
+
+Type | Description
+---- | ----
+ 0x00 | Network ID Type
+ 0x01 | Node indication type
+ 0x02 | Virtual Private Cloud Indication Type
+ 0x03 | Private node indication type
+ 0x04 - 0xFF | Reserved for future use
 
 ## 4. Standard General Information  
 
@@ -151,7 +199,9 @@ The configuration of feature information needs to be based on the requirements o
 ## 5. Private specific information  
 
 Private definition of Composition Data Page 127 to transmit private information. `If the device does not need to support Page 127, it needs to fully follow the Mesh protocol to return a valid page that is smaller than 127 but closest to 127.`  
-The Mesh protocol stipulates that the Access layer payload includes a maximum of 384 bytes for the TransMIC field, with a TransMIC length of 4 or 8 bytes, which is 4 bytes by default. The Access layer includes an opcode + opcode payload, with opcode lengths of 1, 2, and 3 bytes. Therefore, when the opcode length is 3 bytes and the TransMIC length is 8 bytes, the maximum payload length calculation formula is as follows:
+
+The Mesh protocol stipulates that the Access layer payload includes a maximum of 384 bytes for the TransMIC field, with a TransMIC length of 4 or 8 bytes, which is 4 bytes by default. The Access layer includes an opcode + opcode payload, with opcode lengths of 1, 2, and 3 bytes. Therefore, when the opcode length is 3 bytes and the TransMIC length is 8 bytes, the maximum payload length calculation formula is as follows:  
+
 Maximum load length = 384 - 3 - 8 = 373  
 
 **According to the above analysis, the maximum length of opcode payload is 373 bytes, excluding the number of bytes occupied by opcode.**
@@ -218,7 +268,7 @@ The gateway detects the device offline based on three times the heartbeat report
 There are two ways to synchronize the time and time zone of the node gateway  
 
 1. Actively obtain the time of the gateway through the Time Get command specified by the official mesh protocol (Chapter 5.2.1.1 of the MshMDL_v1 documentation)
-2. Actively obtain the time of the gateway through private GET_GW_TIME commands ( sigmesh private protocol specification )  
+2. Actively obtain the time of the gateway through private GET_GW_TIME commands [(sigmesh private protocol specification)](sigmesh_private_protocol.md)  
 
 Synchronization mechanism is as follows  
 
