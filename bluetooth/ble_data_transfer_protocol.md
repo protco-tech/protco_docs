@@ -1,7 +1,7 @@
 
 # Bluetooth transmission protocol  
 
-**TODO:** _Add pairing flow diagram_
+![alt text](images/pairing_diagram.jpg)
 
 The protocol data is in JSON format  
 sign:
