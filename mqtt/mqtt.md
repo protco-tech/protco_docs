@@ -51,7 +51,7 @@ Parameter name | Parameter description
 
 ## Access Process diagram
 
-**TODO:** _insert flow chart here!_
+![MQTT flow](images/mqtt_flow.jpg)
 
 ## 1. Device Level MQTT Messages
 
