@@ -75,13 +75,13 @@ When the values are all 0, it indicates that a multicast/broadcast control statu
 
 For example:  
 
-    ReportWaitTime = 10ÿReportRandomTime = 20
+    ReportWaitTime = 10, ReportRandomTime = 20
 
 Indicates that after receiving the multicast/broadcast control, the node needs to first delay for 10 seconds, and then take a random value between 0 and 20*1000 milliseconds.  
 
 The value starts with a random delay, and the status is reported after the random delay.
 
-**TODO:** _Add diagram!_
+![Mesh Ping](../bluetooth/mesh/images/mesh_ping_image.png)
 
 ### Ping Response (CMD 0x99)
 
