@@ -1,7 +1,7 @@
 
 # WiFi AP mode network configuration  
 
-Connect the phone to the 2.4G WiFi network, fill in the WiFi password, click "Next", and connect to the device hotspot "protcosmart-XXXX".  
+Method: Connect the phone to the 2.4G WiFi network, fill in the WiFi password, click "Next", and connect to the device hotspot "protcosmart-XXXX".  
 
 ## Configuration Process  
 
@@ -16,7 +16,7 @@ Connect the phone to the 2.4G WiFi network, fill in the WiFi password, click "Ne
             "name":"protco-zigbee-gateway",
             "uuid": "rn135adawdasd",
             "pid":"S8rHEJgnoOkntd",
-            "udpPort": 30000,
+            "udpPort": 30000, // Device listening port
         }
     }
     ```

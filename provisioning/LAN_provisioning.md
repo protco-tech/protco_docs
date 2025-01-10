@@ -3,7 +3,7 @@
 
 ## Flow Diagram  
 
-**TODO** _Add Diagram!_  
+![Lan Binding over UDP](images/LAN_Binding.png)
 
 The protocol uses JSON format  
 

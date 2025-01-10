@@ -20,7 +20,7 @@ Take the secret of the triplet for MD5 and then convert it to hex string, and th
     String result = StrUtil.sub(hexMd5,8,24);  
     return result;  
 
-## Bluetooth Broadcasting data Format  (*TODO: Verify!)
+## Bluetooth Broadcasting data Format  
 
 Bluetooth name: RY  
 Broadcast data:
