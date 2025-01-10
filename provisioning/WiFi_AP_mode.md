@@ -69,3 +69,5 @@ Method: Connect the phone to the 2.4G WiFi network, fill in the WiFi password, c
         }
     }
     ```
+
+JSON data format is similar to BLE data transfer protocol. Please refer to the [BLE data transfer protocol documentation.](../bluetooth/ble_data_transfer_protocol.md)

@@ -62,3 +62,5 @@ Broadcast address: 255.255.255.255
         }
     }
     ```
+
+JSON data format is similar to BLE data transfer protocol. Please refer to the [BLE data transfer protocol documentation.](../bluetooth/ble_data_transfer_protocol.md)
