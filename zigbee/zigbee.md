@@ -29,9 +29,9 @@ Attribute ID | Attribute | Type | Value/Description
  0x0007 | Power source | ENUM8 | &nbsp;
  0xFFFD | Cluster revision | INT16U | &nbsp;
  0x0066 | Protco MCU version | INT8U | &nbsp;
- 0x0067 | Protco License | CHAR_STRING | &nbsp;
- 0x0068 | Protco custom protocol report | CHAR_STRING | &nbsp;
- 0x0069 | Protco gateway ping | &nbsp; | &nbsp;
+ 0x0067 | Protco License | STRUCT | &nbsp;
+ 0x0068 | Protco custom protocol report | OCTET_STRING | &nbsp;
+ 0x0069 | Protco gateway ping | INT32U | &nbsp;
 
 Command ID | Command | Direction | Description
 --- | --- | --- | ---
